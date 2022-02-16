@@ -35,6 +35,7 @@ class APIService {
     var values = jsonDecode(response.body);
 
     if (response.statusCode == 200) {
+      print('${values.runtimeType}');
       return values;
     }
     else {
@@ -86,18 +87,23 @@ class APIService {
         headers: headers,
         body: body);
     print('response in charge: '+ response.body);
-    var values = jsonDecode(jsonEncode(response.body));
+    var values = jsonDecode(response.body);
     if (response.statusCode == 200) {
+      print('${values.runtimeType}');
       return values;
     }
     else if(response.statusCode == 400){
       print('400 '+response.reasonPhrase!);
+      return response.reasonPhrase;
     }    else if(response.statusCode == 401){
       print('401 '+response.reasonPhrase!);
+      return response.reasonPhrase;
     }    else if(response.statusCode == 404){
       print('404 '+response.reasonPhrase!);
+      return response.reasonPhrase;
     }    else {
       print('500+' );
+      return response.reasonPhrase;
     }
 
   }
